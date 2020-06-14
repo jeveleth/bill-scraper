@@ -2,13 +2,14 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/jeveleth/bill-scraper/utils"
 )
 
 var URL = "https://openstates.org/graphql?="
 
-// var API_KEY = os.Getenv("OPENSTATES_API_KEY")
+var API_KEY = os.Getenv("OPENSTATES_API_KEY")
 
 var thisConfig = utils.MustLoadConfig()
 
