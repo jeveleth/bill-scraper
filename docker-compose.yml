@@ -7,7 +7,5 @@ services:
       dockerfile: Dockerfile
     environment:
       - OPENSTATES_API_KEY=${OPENSTATES_API_KEY}
-    ports:
-      - 8080:8080
     volumes:
       - $PWD:/tmp
