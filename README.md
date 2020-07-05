@@ -2,6 +2,7 @@
 This repository allows users to run a binary that will generate a CSV file that contains all relevant legislation for a given state.
 
 ## Requirements:
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [Docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac/)
 * [docker-compose](https://docs.docker.com/compose/install/)
 * An OpenStates [API Key](https://openstates.org/accounts/login/).
@@ -10,13 +11,15 @@ This repository allows users to run a binary that will generate a CSV file that 
 ### Setup:
 
 ```
+git clone git@github.com:jeveleth/bill-scraper.git
+cd bill-scraper
 export OPENSTATES_API_KEY=your-api-key
 docker-compose up --build -d
 make build # this might take a few minutes to pull all the necessary docker images
 ```
 ### Running the program:
 To run the program, pass the search terms particular to your use case. For example, if you wish to find all bills in the 20192020 legislative session
-for California taht contain the phrase "peace officer", run:
+for California that contain the phrase "peace officer", run:
 ```
 docker run --rm -e OPENSTATES_API_KEY=${OPENSTATES_API_KEY} -v \
     $(pwd):/tmp -ti bill-scraper_app:latest ./app \
@@ -41,7 +44,7 @@ Abstract
 ```
 
 
-If you want to run the binary without docker (and you have Go set up), you can build and run by doing:
+If you want to run the binary without docker (and you have [Go](https://golang.org/dl/) installed), you can build and run by doing:
 ```
 go build -v -o scraper .
 ./scraper -state "New York" -session "2019-2020" -phrase "Use of force" -num-bills 20
